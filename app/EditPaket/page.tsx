@@ -31,22 +31,22 @@ const page = () => {
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Nama Paket</label>
-              <input value={'Nama Paket'} readOnly className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+              <input type='text' placeholder='Nama Paket' className='px-2 py-4 border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Tanggal Keberangkatan</label>
-              <input value={'2024-07-07'} readOnly className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+              <input type='text' placeholder='yyyy/mm/dd' className='px-2 py-4 border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Lokasi Keberangkatan</label>
-              <input value={'Surakarta'} readOnly className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+              <input type='text' placeholder='Lokasi Keberangkatan' className='px-2 py-4 border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Thumbnail Paket</label>
-              <input value={'www.example.com'} readOnly className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+              <input type='text' placeholder='Link URL (www.example.com)' className='px-2 py-4 border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
@@ -57,21 +57,26 @@ const page = () => {
                   <p className='font-semibold text-[16px]'>Hotel 1</p>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>Bintang: </label>
-                    <input value={4} readOnly className='text-gray-50 p-2 w-[50%] border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Bintang Hotel' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
                   </div>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>Nama Hotel: </label>
-                    <input value={'Hotel Lorem Ipsum'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Nama Hotel' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
                   </div>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>URL Gambar Hotel: </label>
-                    <input value={'www.example.com'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
-                    <input value={'www.example.com'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
-                    <input value={'www.example.com'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Link URL (www.example.com)' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Link URL (www.example.com)' className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Link URL (www.example.com)' className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
                   </div>
                 </div>
 
               </div>
+
+              <button className='flex gap-2 items-center py-1 px-2 w-fit mt-3 bg-[#f14310] text-[16px] text-white font-medium rounded-lg duration-200 hover:bg-black'>
+                <p>Tambah</p>
+                <svg viewBox="0 0 24 24" height={22} width={22} xmlns="http://www.w3.org/2000/svg" className='fill-white'><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero"/></svg>
+              </button>
             </div>
 
             <div className='flex flex-col gap-1'>
@@ -82,54 +87,60 @@ const page = () => {
                   <p className='font-semibold text-[16px]'>Harga 1</p>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>Tipe: </label>
-                    <input value={4} readOnly className='text-gray-50 p-2 w-[50%] border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Tipe Paket' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
                   </div>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>Nominal: </label>
-                    <input value={'Hotel Lorem Ipsum'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
+                    <input type='number' placeholder='Contoh: 500000' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
                   </div>
                   <div className='flex flex-col gap-1'>
                     <label className='font-semibold text-[16px]'>Mata Uang: </label>
-                    <input value={'IDR'} readOnly className='text-gray-50 w-[50%] p-2 border rounded-lg focus:outline-none'/>
+                    <input type='text' placeholder='Contoh: IDR, USD' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
                   </div>
                 </div>
 
               </div>
+
+              <button className='flex gap-2 items-center py-1 px-2 w-fit mt-3 bg-[#f14310] text-[16px] text-white font-medium rounded-lg duration-200 hover:bg-black'>
+                <p>Tambah</p>
+                <svg viewBox="0 0 24 24" height={22} width={22} xmlns="http://www.w3.org/2000/svg" className='fill-white'><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero"/></svg>
+              </button>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Harga DP</label>
-              <input value={'500000'} readOnly className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
+              <input type='number' placeholder='Contoh: 500000' className='p-2 w-[50%] border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Durasi Perjalanan</label>
-              <input value={'9 Hari'} readOnly className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
+              <input type='number' placeholder='Durasi Perjalanan' className='px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Maskapai Penerbangan</label>
-              <input value={'Oman Airways'} readOnly className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
+              <input type='text' placeholder='Maskapai Penerbangan' className='px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Total Seat</label>
-              <input value={40} readOnly className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
+              <input type='number' placeholder='Total Seat' className='px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
             </div>
 
             <div className='flex flex-col gap-1'>
               <label className='font-semibold text-[18px]'>Seat Tersedia</label>
-              <input value={40} readOnly className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
+              <input type='number' placeholder='Seat Tersedia' className='px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
             </div>
             
           </form>
         </div>
         {/* End Of Content */}
 
-        <Link href={'/PaketPage'}>
+        <Link href={'/'}>
           <div className='flexEnd mt-5'>
-            <button className='bg-[#f14310] px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black'>
-              Kembali
+            <button className='bg-[#f14310] px-4 py-2 flex gap-2 items-center rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" className='fill-white'><path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z"/></svg>
+                <p>Simpan Perubahan</p>
             </button>
           </div>
         </Link>
