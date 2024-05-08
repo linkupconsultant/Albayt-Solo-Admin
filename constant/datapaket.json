@@ -1,0 +1,591 @@
+[
+    {
+        "__id__": "haji_khusus",
+        "durasi": 14,
+        "harga": [
+            {
+                "currency": "usd",
+                "nominal": 10000,
+                "tipe": "Premium"
+            },
+            {
+                "currency": "usd",
+                "nominal": 16000,
+                "tipe": "VIP"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "5",
+                "nama_hotel": "Anjum",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.I-ASo8Kv1Q5oXfFUK3e0oAHaE8?rs=1&pid=ImgDetMain",
+                    "https://pix10.agoda.net/hotelImages/5668556/93429643/40bd8d3d88f204439912f0e9436b31d7.jpg?s=1024x768",
+                    "https://www.hoteliermiddleeast.com/public/images/2018/10/26/ANJUM-045.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Hyatt Regency",
+                "url_hotel": [
+                    "https://i.ytimg.com/vi/SGNenfCeeqY/maxresdefault.jpg",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/6e/ec/dc/royal-suite-bedroom.jpg?w=1200&h=-1&s=1",
+                    "https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2019/01/31/1037/Hyatt-Regency-Makkah-JODC-P038-Villa-Terrace.jpg/Hyatt-Regency-Makkah-JODC-P038-Villa-Terrace.16x9.jpg?imwidth=1280"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Frontel",
+                "url_hotel": [
+                    "https://s5df90a19aaf2126e.s3-jak01.storageraya.com/1634910177-259877/16654711936918-xE3Wm2NEI35DAsmsxD8dVgiCuax1HbAOL7xFai7X.jpeg",
+                    "https://th.bing.com/th/id/OIP.i78MRjXSN6cPSW4nYZ3tEgAAAA?w=474&h=355&rs=1&pid=ImgDetMain",
+                    "https://th.bing.com/th/id/R.b59f66d9716e1d3761fe0b261bebe376?rik=XedIaGYQL7kBcA&riu=http%3a%2f%2fwww.cfmedia.vfmleonardo.com%2fimageRepo%2f5%2f0%2f89%2f11%2f194%2f9516_rosqd_00_p_3000x2250_P.jpg&ehk=zzUCsGsaLYZuiK48jntKyFOq3SMFnfLlGCPpmeSBWc4%3d&risl=&pid=ImgRaw&r=0"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/haji_khusus.jpg",
+        "jadwal": "2024-07-24",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "haji_khusus",
+        "remainingseat": 33,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/tn_haji_khusus.jpg",
+        "title": "Paket Haji Khusus",
+        "totalseat": 40
+    },
+    {
+        "__id__": "napak_tilas",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "usd",
+                "nominal": 2450,
+                "tipe": "Quad"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/napak_tilas.jpg",
+        "jadwal": "2024-08-11",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Oman Airways",
+        "paketID": "napak_tilas",
+        "remainingseat": 33,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/napak_tilas.jpg",
+        "title": "Napak Tilas Bumi Para Rasul (11 Agustus 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "napak_tilas_23nov",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "usd",
+                "nominal": 2450,
+                "tipe": "Quad"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/napak_tilas.jpg",
+        "jadwal": "2024-11-23",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Oman Airways",
+        "paketID": "napak_tilas_23nov",
+        "remainingseat": 37,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/napak_tilas.jpg",
+        "title": "Napak Tilas Bumi Para Rasul (23 November 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "supersaver",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 25990000,
+                "tipe": "Quad"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "5",
+                "nama_hotel": "Mirage Salam",
+                "url_hotel": [
+                    "https://imgproc.tjwlcdn.com/fit-in/900x500/http:/hotelcms-contents-live.tajawal.com/2591d470-a4f1-408e-9c8c-562666584442.jpg",
+                    "https://www.funadiq.com/public/uploads/media/property-image_4039db9b209f68515.jpg",
+                    "https://pix10.agoda.net/hotelImages/119/1198536/1198536_16051814190042444404.jpg?ca=13&ce=1&s=1024x768"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Ramada",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/03/93/a1/ramada-dar-al-fayzeen.jpg?w=900&h=-1&s=1",
+                    "https://th.bing.com/th/id/OIP.2FVckFfuiNpRHmdSLHerswHaFD?rs=1&pid=ImgDetMain",
+                    "https://www.letsbookhotel.com/img/max300/102/10263901.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/supersaver.jpg",
+        "jadwal": "2024-07-27",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Oman Airways",
+        "paketID": "supersaver",
+        "remainingseat": 38,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/tn_supersaver.jpg",
+        "title": "Umrah Super Saver 27 Juli 2024",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_awal_musim",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 31500000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 33500000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35500000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Anjum",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.I-ASo8Kv1Q5oXfFUK3e0oAHaE8?rs=1&pid=ImgDetMain",
+                    "https://pix10.agoda.net/hotelImages/5668556/93429643/40bd8d3d88f204439912f0e9436b31d7.jpg?s=1024x768",
+                    "https://www.hoteliermiddleeast.com/public/images/2018/10/26/ANJUM-045.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "jadwal": "2024-07-24",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_awal_musim",
+        "remainingseat": 39,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "title": "Program Umrah Awal Musim 2024 (24 Juli 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_awal_musim_04sep",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 31500000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 33500000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35500000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Anjum",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.I-ASo8Kv1Q5oXfFUK3e0oAHaE8?rs=1&pid=ImgDetMain",
+                    "https://pix10.agoda.net/hotelImages/5668556/93429643/40bd8d3d88f204439912f0e9436b31d7.jpg?s=1024x768",
+                    "https://www.hoteliermiddleeast.com/public/images/2018/10/26/ANJUM-045.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "jadwal": "2024-09-04",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_awal_musim_04sep",
+        "remainingseat": 38,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "title": "Program Umrah Awal Musim 2024 (04 September 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_awal_musim_07agt",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 31500000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 33500000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35500000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Anjum",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.I-ASo8Kv1Q5oXfFUK3e0oAHaE8?rs=1&pid=ImgDetMain",
+                    "https://pix10.agoda.net/hotelImages/5668556/93429643/40bd8d3d88f204439912f0e9436b31d7.jpg?s=1024x768",
+                    "https://www.hoteliermiddleeast.com/public/images/2018/10/26/ANJUM-045.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "jadwal": "2024-08-07",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_awal_musim_07agt",
+        "remainingseat": 40,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "title": "Program Umrah Awal Musim 2024 (07 Agustus 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_awal_musim_23okt",
+        "durasi": 9,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 31500000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 33500000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35500000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Golden Tulip",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/c0/78/32/al-ansar-golden-tulip.jpg?w=900&h=-1&s=1",
+                    "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http:/media.iceportal.com/84778/photos/4046878_XL/Golden-Tulip-Al-Ansar-Room.jpg?tr=w-780%2Ch-437%2Cfo-auto",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/2b/53/d7/nozol-alshakreen-hotel.jpg?w=1200&h=-1&s=1"
+                ]
+            },
+            {
+                "bintang": "5",
+                "nama_hotel": "Anjum",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.I-ASo8Kv1Q5oXfFUK3e0oAHaE8?rs=1&pid=ImgDetMain",
+                    "https://pix10.agoda.net/hotelImages/5668556/93429643/40bd8d3d88f204439912f0e9436b31d7.jpg?s=1024x768",
+                    "https://www.hoteliermiddleeast.com/public/images/2018/10/26/ANJUM-045.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "jadwal": "2024-10-23",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_awal_musim_23okt",
+        "remainingseat": 40,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/awal_musim.jpg",
+        "title": "Program Umrah Awal Musim 2024 (23 Oktober 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_plus_turki",
+        "durasi": 14,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 34000000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35000000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 38000000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Tabbah Tower",
+                "url_hotel": [
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_480_270_R5_D.png",
+                    "https://i.ytimg.com/vi/nioXl11GbHQ/maxresdefault.jpg",
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_960_660_R5_D.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Europark",
+                "url_hotel": [
+                    "https://pix8.agoda.net/hotelImages/24768038/-1/d93b352dd63fa8bab75fa3400e33c9d8.jpg",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/be/39/93/euro-park-hotel-bursa.jpg?w=1400&h=-1&s=1",
+                    "https://cdn.tatilsepeti.com/Files/TesisResim/01311/tsr01311637048413880413398.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Grand Massa",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/R.4ed0576385d1b1d87a5e141d7a1962a2?rik=oAWoqkINsMTivA&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681180804.jpg&ehk=PQ9l0yfFEf%2bjcSVlp3ceOW70aYrzTf6MnkUKGhahRVc%3d&risl=&pid=ImgRaw&r=0",
+                    "https://pix10.agoda.net/hotelImages/232/232213/232213_15062314340030452260.jpg?s=1024x768",
+                    "https://th.bing.com/th/id/R.2ebc6e776067d8016d5f4054d6e4038f?rik=JRxUmW2JPbHPDw&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681181446.jpg&ehk=9gU5VtPBYbFlIm%2bH7P8Lktb42NmX7J5K2ERlReg%2flhA%3d&risl=&pid=ImgRaw&r=0"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Euro Park",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/4d/ca/c8/euro-park-otel.jpg?w=900&h=-1&s=1",
+                    "https://imgkit.otelz.com/turkey/istanbul/europarkotel801481c8.jpg?tr=w-500,h-300,fo-auto",
+                    "https://www.kayak.com/rimg/himg/4f/52/1d/leonardo-2141509-68741218_4K_O-460807.jpg?width=1366&height=768&crop=true"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Suhan",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/59/e2/8d/la-piscina-de-dia.jpg?w=900&h=-1&s=1",
+                    "https://th.bing.com/th/id/R.69e1fc6e311099a324f25dd03a415d98?rik=N%2fjs6H4Xwuir8w&riu=http%3a%2f%2fwww.suhankapadokya.com%2fimages%2fupload%2ftower.jpg&ehk=v3g7eRRMynZfHLQ%2bh7jCGucfN4NCQzZRTSYxlXom38k%3d&risl=&pid=ImgRaw&r=0",
+                    "https://cdn.webhotelier.net/photos/w=1920/suhan360/L111327.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/umrah_plus_turkiye.jpg",
+        "jadwal": "2024-07-24",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_plus_turki",
+        "remainingseat": 40,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/tn_umrah_turkiye.jpg",
+        "title": "Umrah Plus Turkiye 14 Hari (24 Juli 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umrah_plus_turki_07agt",
+        "durasi": 14,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 34000000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 35000000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 38000000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Tabbah Tower",
+                "url_hotel": [
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_480_270_R5_D.png",
+                    "https://i.ytimg.com/vi/nioXl11GbHQ/maxresdefault.jpg",
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_960_660_R5_D.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Europark",
+                "url_hotel": [
+                    "https://pix8.agoda.net/hotelImages/24768038/-1/d93b352dd63fa8bab75fa3400e33c9d8.jpg",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/be/39/93/euro-park-hotel-bursa.jpg?w=1400&h=-1&s=1",
+                    "https://cdn.tatilsepeti.com/Files/TesisResim/01311/tsr01311637048413880413398.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Grand Massa",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/R.4ed0576385d1b1d87a5e141d7a1962a2?rik=oAWoqkINsMTivA&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681180804.jpg&ehk=PQ9l0yfFEf%2bjcSVlp3ceOW70aYrzTf6MnkUKGhahRVc%3d&risl=&pid=ImgRaw&r=0",
+                    "https://pix10.agoda.net/hotelImages/232/232213/232213_15062314340030452260.jpg?s=1024x768",
+                    "https://th.bing.com/th/id/R.2ebc6e776067d8016d5f4054d6e4038f?rik=JRxUmW2JPbHPDw&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681181446.jpg&ehk=9gU5VtPBYbFlIm%2bH7P8Lktb42NmX7J5K2ERlReg%2flhA%3d&risl=&pid=ImgRaw&r=0"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Euro Park",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/4d/ca/c8/euro-park-otel.jpg?w=900&h=-1&s=1",
+                    "https://imgkit.otelz.com/turkey/istanbul/europarkotel801481c8.jpg?tr=w-500,h-300,fo-auto",
+                    "https://www.kayak.com/rimg/himg/4f/52/1d/leonardo-2141509-68741218_4K_O-460807.jpg?width=1366&height=768&crop=true"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Suhan",
+                "url_hotel": [
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/59/e2/8d/la-piscina-de-dia.jpg?w=900&h=-1&s=1",
+                    "https://th.bing.com/th/id/R.69e1fc6e311099a324f25dd03a415d98?rik=N%2fjs6H4Xwuir8w&riu=http%3a%2f%2fwww.suhankapadokya.com%2fimages%2fupload%2ftower.jpg&ehk=v3g7eRRMynZfHLQ%2bh7jCGucfN4NCQzZRTSYxlXom38k%3d&risl=&pid=ImgRaw&r=0",
+                    "https://cdn.webhotelier.net/photos/w=1920/suhan360/L111327.jpg"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/umrah_plus_turkiye.jpg",
+        "jadwal": "2024-08-07",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umrah_plus_turki_07agt",
+        "remainingseat": 40,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/tn_umrah_turkiye.jpg",
+        "title": "Umrah Plus Turkiye 14 Hari (07 Agustus 2024)",
+        "totalseat": 40
+    },
+    {
+        "__id__": "umroh_kairo",
+        "durasi": 14,
+        "harga": [
+            {
+                "currency": "idr",
+                "nominal": 32500000,
+                "tipe": "Quad"
+            },
+            {
+                "currency": "idr",
+                "nominal": 34000000,
+                "tipe": "Triple"
+            },
+            {
+                "currency": "idr",
+                "nominal": 36000000,
+                "tipe": "Double"
+            }
+        ],
+        "harga_dp": 500000,
+        "hotel": [
+            {
+                "bintang": "4",
+                "nama_hotel": "Tabbah Tower",
+                "url_hotel": [
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_480_270_R5_D.png",
+                    "https://i.ytimg.com/vi/nioXl11GbHQ/maxresdefault.jpg",
+                    "https://ak-d.tripcdn.com/images/0222k12000aadfvaeF7DA_R_960_660_R5_D.jpg"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Grand Massa",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/R.4ed0576385d1b1d87a5e141d7a1962a2?rik=oAWoqkINsMTivA&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681180804.jpg&ehk=PQ9l0yfFEf%2bjcSVlp3ceOW70aYrzTf6MnkUKGhahRVc%3d&risl=&pid=ImgRaw&r=0",
+                    "https://pix10.agoda.net/hotelImages/232/232213/232213_15062314340030452260.jpg?s=1024x768",
+                    "https://th.bing.com/th/id/R.2ebc6e776067d8016d5f4054d6e4038f?rik=JRxUmW2JPbHPDw&riu=http%3a%2f%2fhajjetomra.com%2fwp-content%2fuploads%2f2019%2f02%2f681181446.jpg&ehk=9gU5VtPBYbFlIm%2bH7P8Lktb42NmX7J5K2ERlReg%2flhA%3d&risl=&pid=ImgRaw&r=0"
+                ]
+            },
+            {
+                "bintang": "4",
+                "nama_hotel": "Pyramid Park",
+                "url_hotel": [
+                    "https://th.bing.com/th/id/OIP.LwfP8yK522OzXEpQB87MpQHaED?rs=1&pid=ImgDetMain",
+                    "https://cache.marriott.com/marriottassets/marriott/CAIMD/caimd-pool-2210-hor-wide.jpg?interpolation=progressive-bilinear&downsize=1440px:*",
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/bc/ab/2f/large-bed-room.jpg?w=1400&h=-1&s=1"
+                ]
+            }
+        ],
+        "img": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/umrah_kairo.jpg",
+        "jadwal": "2024-12-23",
+        "lokasiberangkat": "Jakarta",
+        "maskapai": "Saudi Airlines",
+        "paketID": "umroh_kairo",
+        "remainingseat": 40,
+        "thumbnail": "https://google-drive-storage.solo-albayt.workers.dev/paket_data/umrah_kairo.jpg",
+        "title": "Umrah Plus Kairo Liburan Akhir Tahun 2024",
+        "totalseat": 40
+    }
+]
