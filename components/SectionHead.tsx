@@ -3,9 +3,10 @@ import React from 'react'
 type headProps = {
     title: string;
     placeholder: string;
+    addButton: 'hidden' | 'visible';
 }
 
-const SectionHead = ({title, placeholder}: headProps) => {
+const SectionHead = ({title, placeholder, addButton}: headProps) => {
   return (
     <>
         <div className='flexBetween my-6 '>
@@ -18,6 +19,10 @@ const SectionHead = ({title, placeholder}: headProps) => {
                 </div>
                 <button className='py-2 px-4 rounded-lg bg-[#f14310] font-medium text-white tracking-wider duration-200 hover:bg-black'>
                     Cari
+                </button>
+                <button className={`py-2 px-4 rounded-lg flex gap-1 items-center bg-[#f14310] font-medium text-white tracking-wider duration-200 hover:bg-black ${addButton} `}>
+                    <svg viewBox="0 0 24 24" height={24} width={24} xmlns="http://www.w3.org/2000/svg" className='fill-white'><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fill-rule="nonzero"/></svg>
+                    <p>Tambah</p>
                 </button>
             </div>
         </div>

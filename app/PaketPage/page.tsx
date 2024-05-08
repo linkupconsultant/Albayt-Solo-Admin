@@ -1,14 +1,14 @@
 import CardPaket from "@/components/CardPaket";
 import SectionHead from "@/components/SectionHead";
-import { PACKAGE_DATA } from "@/constant";
 import data_paket from "@/constant/datapaket.json"
 import React from "react";
 
 const page = () => {
+
   return (
     <>
       <section className="bg-white p-6 rounded-lg">
-        <SectionHead title="Paket" placeholder="Cari Paket" />
+        <SectionHead title="Paket" placeholder="Cari Paket" addButton="visible" />
 
         {/* Content */}
         <div className="grid grid-cols-3 gap-5">
