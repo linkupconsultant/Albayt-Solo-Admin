@@ -1,9 +1,25 @@
-import CardPaket from "@/components/CardPaket";
+"use client"
+import CardPaket, {cardProps} from "@/components/CardPaket";
 import SectionHead from "@/components/SectionHead";
 import data_paket from "@/constant/datapaket.json"
-import React from "react";
+import React, {useEffect, useState} from "react";
+import {ambilSemuaPaket} from "@/db/query";
 
-const page = () => {
+const Page = () => {
+    const [paket, setPaket] = useState<cardProps[] | null>(null)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await ambilSemuaPaket();
+                setPaket(response);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData().then()
+    }, []);
 
   return (
     <>
@@ -12,8 +28,8 @@ const page = () => {
 
         {/* Content */}
         <div className="grid grid-cols-3 gap-5">
-          {data_paket.map((paket) => (
-            <CardPaket key={paket.paketID} paketID={paket.paketID} img={paket.img} title={paket.title} durasi={paket.durasi} harga={paket.harga} harga_dp={paket.harga_dp} hotel={paket.hotel} jadwal={paket.jadwal} lokasikeberangkatan={paket.lokasiberangkat} maskapai={paket.maskapai} remainingseat={paket.remainingseat} thumbnail={paket.thumbnail} totalseat={paket.totalseat} />
+          {paket?.map((paket) => (
+            <CardPaket key={paket.paketID} paket={paket} />
           ))}
         </div>
         {/* End Of Content */}
@@ -23,4 +39,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
