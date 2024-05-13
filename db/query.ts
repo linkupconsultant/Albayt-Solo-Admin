@@ -3,14 +3,28 @@ import {collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, where, q
 import {getPaket} from "@/db/firestore";
 import {paketProps} from "@/components/CardPaket";
 
-export const ambilSemuaPaket = async () => {
-    const q = query(collection(firestore, 'paket'), where('remainingseat', '>', 0));
+export const ambilSemuaPaket = async (flag: "<" | ">") => {
+    const specificDate = new Date("2024-09-24");
+
+    const q = query(collection(firestore, "paket"));
 
     const querySnapshot = await getDocs(q);
     const paketArray: any[] = [];
 
     querySnapshot.forEach((doc) => {
-        paketArray.push(doc.data());
+        const jadwal = new Date(doc.data().jadwal);
+        switch (flag) {
+            case "<":
+                if (jadwal < specificDate) {
+                    paketArray.push(doc.data());
+                }
+                break
+            case ">":
+                if (jadwal > specificDate) {
+                    paketArray.push(doc.data());
+                }
+                break
+        }
     });
 
     return paketArray;

@@ -36,6 +36,7 @@ export type cardProps = {
   thumbnail: string,
   title: string,
   totalseat: number,
+  jadwal: string
 }
 
 const CardPaket : React.FC<{paket : cardProps}> = ({paket}) => {
