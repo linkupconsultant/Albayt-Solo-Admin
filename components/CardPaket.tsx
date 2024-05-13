@@ -40,11 +40,13 @@ export type cardProps = {
 
 const CardPaket : React.FC<{paket : cardProps}> = ({paket}) => {
   return (
-    <div key={paket.paketID} className='flex flex-col justify-between bg-white h-[19rem] rounded-lg shadow-md border duration-500 hover:shadow-xl'>
+    <div key={paket.paketID} className='flex flex-col justify-between bg-white h-96 rounded-lg shadow-md border duration-500 hover:shadow-xl'>
       <div>
         <img src={paket.thumbnail} alt='foto-paket' className='h-40 w-full object-cover rounded-t-lg' />
-        <h1 className='font-semibold text-[14px] text-center my-3 mx-6'>{paket.title}</h1>
-        <Seatbar totalSeats={paket.totalseat} remainingSeats={paket.remainingseat} />
+        <h1 className='font-semibold text-[14px] text-center my-3 mx-6 h-16'>{paket.title}</h1>
+        <div className='mx-6'>
+          <Seatbar totalSeats={paket.totalseat} remainingSeats={paket.remainingseat} />
+        </div>
       </div>
       <div className='flexEnd gap-2 items-center m-4'>
         {/*<Link href={'/EditPaket'}>*/}
