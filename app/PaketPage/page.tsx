@@ -1,7 +1,6 @@
 "use client"
 import CardPaket, { cardProps } from "@/components/CardPaket";
 import SectionHead from "@/components/SectionHead";
-import data_paket from "@/constant/datapaket.json";
 import React, { useEffect, useState } from "react";
 import { ambilSemuaPaket } from "@/db/query";
 
@@ -41,7 +40,7 @@ const Page = () => {
     return (
         <>
             <section className="bg-white p-6 rounded-lg">
-                <SectionHead title="Paket" placeholder="Cari Paket" addButton="visible" />
+                <SectionHead title="Paket" placeholder="Cari Paket" addButton="visible" link="/TambahPaket" />
 
                 {/* Tabs */}
                 <div className="flex justify-center gap-5 mb-4">

@@ -7,7 +7,7 @@ const page = () => {
   return (
     <>
         <section className='bg-white rounded-lg p-6'>
-            <SectionHead title='Testimoni' placeholder='Cari Testimoni' addButton='hidden'/>
+            <SectionHead title='Testimoni' placeholder='Cari Testimoni' addButton='hidden' link=''/>
 
             <table className='w-full'>
                 <thead>

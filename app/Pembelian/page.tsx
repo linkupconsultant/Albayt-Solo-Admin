@@ -60,7 +60,7 @@ const Page = () => {
   return (
       <>
         <section className='bg-white p-6 rounded-lg'>
-          <SectionHead title='Pembelian' placeholder='Pembelian' addButton='hidden' />
+          <SectionHead title='Pembelian' placeholder='Pembelian' addButton='hidden' link='' />
 
           {/* Content */}
           <div className='grid grid-cols-3 items-center gap-5'>
