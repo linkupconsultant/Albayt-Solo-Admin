@@ -1,30 +1,32 @@
 import { firestore } from "@/db/firebase";
-import {collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, where, query} from "firebase/firestore";
+import {collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, where, query, startAt, endAt, limit, startAfter} from "firebase/firestore";
 import {getPaket} from "@/db/firestore";
 import {paketProps} from "@/components/CardPaket";
+import {DataPembelian} from "@/app/Pembelian/page";
 
 export const ambilSemuaPaket = async (flag: "<" | ">") => {
-    const specificDate = new Date("2024-09-24");
+    const specificDate = new Date();
 
-    const q = query(collection(firestore, "paket"));
+    let q;
+    if (flag === "<") {
+        q = query(
+            collection(firestore, "paket"),
+            where("jadwal", "<", specificDate)
+        );
+    } else if (flag === ">") {
+        q = query(
+            collection(firestore, "paket"),
+            where("jadwal", ">", specificDate)
+        );
+    } else {
+        throw new Error("Invalid flag value");
+    }
 
     const querySnapshot = await getDocs(q);
     const paketArray: any[] = [];
 
     querySnapshot.forEach((doc) => {
-        const jadwal = new Date(doc.data().jadwal);
-        switch (flag) {
-            case "<":
-                if (jadwal < specificDate) {
-                    paketArray.push(doc.data());
-                }
-                break
-            case ">":
-                if (jadwal > specificDate) {
-                    paketArray.push(doc.data());
-                }
-                break
-        }
+        paketArray.push(doc.data());
     });
 
     return paketArray;
@@ -36,6 +38,19 @@ export const ambilPaket = async(paketID: string) => {
 
     return paketSnapshot.data() as paketProps
 }
+
+export const addPaket = async (paketID: string, isiPaket:paketProps) => {
+    const userRef = doc(firestore, "paket", paketID);
+    try {
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+            alert("ID Paket sudah digunakan, silakan buat ID lain")
+            return
+        }
+    } catch (error) {
+        console.error("Error updating user purchase history:", error);
+    }
+};
 
 export const editPaket = async (paketID: string, isiPaket:paketProps) => {
     const userRef = doc(firestore, "paket", paketID);
@@ -67,15 +82,24 @@ export const deletePaket = async (paketID: string) => {
     }
 };
 
-export const ambilSemuaPemesanan = async () => {
+export const ambilSemuaPemesanan = async (page: number) => {
     const q = query(collection(firestore, 'pembelian'));
 
     const querySnapshot = await getDocs(q);
+    const lastVisible = querySnapshot.docs[page * 6];
     const pemesananArray: any[] = [];
 
-    querySnapshot.forEach((doc) => {
+    const next =
+        query(collection(firestore, "pembelian"),
+        startAt(lastVisible),
+        limit(6)
+    );
+
+    const a = await getDocs(next)
+    a.forEach((doc) => {
         pemesananArray.push(doc.data());
     });
 
-    return pemesananArray;
+    return [pemesananArray as DataPembelian[], querySnapshot.docs.length as number];
 };
+

@@ -3,7 +3,7 @@ import SectionHead from '@/components/SectionHead'
 import React, {useEffect, useState} from 'react'
 import data_paket from '@/constant/datapaket.json'
 import Link from 'next/link'
-import {cardProps} from "@/components/CardPaket";
+import {cardProps, paketProps} from "@/components/CardPaket";
 import {ambilSemuaPemesanan} from "@/db/query";
 import { Timestamp } from 'firebase-admin/firestore'
 
@@ -36,12 +36,14 @@ export interface DataPembelian {
 const Page = () => {
   const [data_pembelian, setData_pembelian] = useState<DataPembelian[] | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [docLength, setDocLength] = useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await ambilSemuaPemesanan();
-        setData_pembelian(response);
+        const [response, response2] = await ambilSemuaPemesanan(currentPage);
+        setData_pembelian(response as DataPembelian[]);
+        setDocLength(response2 as number)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -55,7 +57,9 @@ const Page = () => {
   };
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
+    if (page < docLength/6){
+      setCurrentPage(page);
+    }
   };
 
   return (
@@ -109,6 +113,9 @@ const Page = () => {
             >
               Previous
             </button>
+            <div className={"flex justify-center w-6"}>
+              {currentPage+1}
+            </div>
             <button
                 className='px-4 py-2 ml-2 rounded-lg bg-gray-200 text-gray-700'
                 onClick={() => handlePageChange(currentPage + 1)}
