@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Seatbar from "@/components/Seatbar";
+import { Timestamp } from 'firebase-admin/firestore';
 
 export type hargaProps = {
   tipe: string,
@@ -20,7 +21,7 @@ export type paketProps = {
   harga_dp: number,
   hotel: hotelProps[],
   img: string,
-  jadwal: string,
+  jadwal: Timestamp,
   lokasiberangkat: string,
   maskapai: string,
   paketID: string,
