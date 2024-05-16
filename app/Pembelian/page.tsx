@@ -5,6 +5,7 @@ import data_paket from '@/constant/datapaket.json'
 import Link from 'next/link'
 import {cardProps} from "@/components/CardPaket";
 import {ambilSemuaPemesanan} from "@/db/query";
+import { Timestamp } from 'firebase-admin/firestore'
 
 export interface DewasaData {
   nama: string;
@@ -27,7 +28,7 @@ export interface DataPembelian {
   };
   metodePembayaran: string;
   totalPembayaran: number;
-  tanggalPemesanan: string;
+  tanggalPemesanan: Timestamp;
   urlBuktiPembayaran: string;
   statusPembayaran: string;
 }
@@ -81,7 +82,12 @@ const Page = () => {
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
                         <p className='text-gray-50'>Tanggal Pembelian</p>
-                        <p>{new Date(pembelian?.tanggalPemesanan).toISOString().slice(0, 10)}</p>
+                        <p>
+                          {pembelian.tanggalPemesanan?.seconds
+                            ? new Date(pembelian.tanggalPemesanan.seconds * 1000).toLocaleString('id-ID', { day: '2-digit', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false })
+                            : ''
+                          }
+                        </p>
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
                         <p className='text-gray-50'>Paket Yang Dibeli</p>
