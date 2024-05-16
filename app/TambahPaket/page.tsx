@@ -1,12 +1,7 @@
-'use client'
-
 import Link from 'next/link';
-import { useParams } from 'next/navigation'
 import React from 'react'
 
 const page = () => {
-  const params = useParams();
-
   return (
     <>
       <section className='bg-white p-6 rounded-lg'>
