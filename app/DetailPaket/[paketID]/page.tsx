@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {cardProps, hargaProps, hotelProps, paketProps} from "@/components/CardPaket";
 import {ambilPaket, ambilSemuaPaket, deletePaket, editPaket} from "@/db/query";
+import {Timestamp} from "firebase/firestore";
 
 const Page = () => {
   const params = useParams()
@@ -28,7 +29,14 @@ const Page = () => {
   const handleChange = (key: keyof paketProps, value: any) => {
     setPaket((prevPaket) => {
       if (!prevPaket) return prevPaket;
-      const newValue = ['remainingseat', 'totalseat', 'durasi'].includes(key) ? parseInt(value) : value;
+
+      let newValue: any = value;
+      if (['remainingseat', 'totalseat', 'durasi'].includes(key)) {
+        newValue = parseInt(value);
+      } else if (key === 'jadwal') {
+        newValue = Timestamp.fromDate(new Date(value));
+      }
+
       return { ...prevPaket, [key]: newValue } as paketProps;
     });
   };
@@ -140,41 +148,45 @@ const Page = () => {
             <form className='flex flex-col gap-5 my-8'>
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>ID Paket</label>
-                <input onChange={(e) => handleChange('paketID', e.target.value)} value={paket?.paketID}
-                       readOnly={!isEditing} className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+                <input onChange={(e) => handleChange('paketID', e.target.value)} value={paket?.paketID || ""}
+                       readOnly className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Nama Paket</label>
-                <input onChange={(e) => handleChange('title', e.target.value)} value={paket?.title}
+                <input onChange={(e) => handleChange('title', e.target.value)} value={paket?.title || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Tanggal Keberangkatan</label>
-                <input type={"date"} onChange={(e) => handleChange('jadwal', e.target.value)} value={paket?.jadwal}
-                       readOnly={!isEditing}
-                       className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+                <input
+                    type="date"
+                    onChange={(e) => handleChange('jadwal', e.target.value)}
+                    value={paket?.jadwal ? new Date(paket.jadwal.seconds * 1000).toISOString().split('T')[0] : ''}
+                    readOnly={!isEditing}
+                    className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                />
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Lokasi Keberangkatan</label>
-                <input onChange={(e) => handleChange('lokasiberangkat', e.target.value)} value={paket?.lokasiberangkat}
+                <input onChange={(e) => handleChange('lokasiberangkat', e.target.value)} value={paket?.lokasiberangkat || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Poster Paket</label>
-                <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img}
+                <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Thumbnail Paket</label>
-                <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail}
+                <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
@@ -186,13 +198,13 @@ const Page = () => {
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Hotel ${index + 1}`}</label>
                         <input
-                            value={hotel.bintang}
+                            value={hotel.bintang || ""}
                             readOnly={!isEditing}
                             onChange={(e) => handleHotelChange(index, 'bintang', e.target.value)}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
                         />
                         <input
-                            value={hotel.nama_hotel}
+                            value={hotel.nama_hotel || ""}
                             readOnly={!isEditing}
                             onChange={(e) => handleHotelChange(index, 'nama_hotel', e.target.value)}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
@@ -202,7 +214,7 @@ const Page = () => {
                           {hotel.url_hotel.map((url, urlIndex) => (
                               <input
                                   key={urlIndex}
-                                  value={url}
+                                  value={url || ""}
                                   readOnly={!isEditing}
                                   onChange={(e) => handleHotelChange(index, "urlIndex", {
                                     index: urlIndex,
@@ -217,7 +229,6 @@ const Page = () => {
                   {isEditing && (
                       <div
                           onClick={handleAddHotel}
-
                           className='bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black hover:cursor-pointer'
                       >
                         Tambah Hotel
@@ -233,19 +244,19 @@ const Page = () => {
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Harga ${index + 1}`}</label>
                         <input
-                            value={harga.tipe}
+                            value={harga.tipe || ""}
                             readOnly={!isEditing}
                             onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
                         />
                         <input
-                            value={harga.nominal}
+                            value={harga.nominal || ""}
                             readOnly={!isEditing}
                             onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
                         />
                         <select
-                            value={harga.currency}
+                            value={harga.currency || ""}
                             disabled={!isEditing}
                             onChange={(e) => handleHargaChange(index, 'currency', e.target.value)}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
@@ -268,21 +279,21 @@ const Page = () => {
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Harga DP</label>
-                <input onChange={(e) => handleChange('harga_dp', e.target.value)} value={paket?.harga_dp}
+                <input onChange={(e) => handleChange('harga_dp', e.target.value)} value={paket?.harga_dp || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Durasi Perjalanan</label>
-                <input type={"number"} onChange={(e) => handleChange('durasi', e.target.value)} value={paket?.durasi}
+                <input type={"number"} onChange={(e) => handleChange('durasi', e.target.value)} value={paket?.durasi || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Maskapai Penerbangan</label>
-                <input onChange={(e) => handleChange('maskapai', e.target.value)} value={paket?.maskapai}
+                <input onChange={(e) => handleChange('maskapai', e.target.value)} value={paket?.maskapai || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
@@ -290,14 +301,14 @@ const Page = () => {
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Total Seat</label>
                 <input type={"number"} onChange={(e) => handleChange('totalseat', e.target.value)}
-                       value={paket?.totalseat} readOnly={!isEditing}
+                       value={paket?.totalseat || ""} readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Seat Tersedia</label>
                 <input type={"number"} onChange={(e) => handleChange('remainingseat', e.target.value)}
-                       value={paket?.remainingseat} readOnly={!isEditing}
+                       value={paket?.remainingseat || ""} readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 

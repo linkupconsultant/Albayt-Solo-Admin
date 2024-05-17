@@ -1,41 +1,38 @@
-"use client"
+"use client";
 import CardPaket, { cardProps } from "@/components/CardPaket";
 import SectionHead from "@/components/SectionHead";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { ambilSemuaPaket } from "@/db/query";
 
 const Page = () => {
     const [paketBaru, setPaketBaru] = useState<cardProps[] | null>(null);
     const [selectedTab, setSelectedTab] = useState("paketBaru");
     const [paketLama, setPaketLama] = useState<cardProps[] | null>(null);
+    const [paketLamaFetched, setPaketLamaFetched] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await ambilSemuaPaket(">");
-                setPaketBaru(response);
-            } catch (error) {
-                console.error("Error fetching data:", error);
+    const fetchData = useCallback(async () => {
+        try {
+            if (selectedTab === "paketBaru") {
+                const responseBaru = await ambilSemuaPaket(">");
+                setPaketBaru(responseBaru);
+            } else if (selectedTab === "paketLama") {
+                const responseLama = await ambilSemuaPaket("<");
+                setPaketLama(responseLama);
+                setPaketLamaFetched(true);
             }
-        };
-
-        fetchData().then();
-    }, []);
-
-    useEffect(() => {
-        if (selectedTab === "paketLama") {
-            const fetchPaketLama = async () => {
-                try {
-                    const response = await ambilSemuaPaket("<");
-                    setPaketLama(response);
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                }
-            };
-
-            fetchPaketLama().then();
+        } catch (error) {
+            console.error("Error fetching data:", error);
         }
     }, [selectedTab]);
+
+    useEffect(() => {
+        fetchData().then();
+    }, [fetchData, refresh]);
+
+    const handleRefresh = () => {
+        setRefresh(!refresh);
+    };
 
     return (
         <>

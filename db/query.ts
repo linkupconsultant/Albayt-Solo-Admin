@@ -1,5 +1,20 @@
 import { firestore } from "@/db/firebase";
-import {collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, where, query, startAt, endAt, limit, startAfter} from "firebase/firestore";
+import {
+    collection,
+    deleteDoc,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    updateDoc,
+    where,
+    query,
+    startAt,
+    endAt,
+    limit,
+    startAfter,
+    orderBy
+} from "firebase/firestore";
 import {getPaket} from "@/db/firestore";
 import {paketProps} from "@/components/CardPaket";
 import {DataPembelian} from "@/app/Pembelian/page";
@@ -83,16 +98,17 @@ export const deletePaket = async (paketID: string) => {
 };
 
 export const ambilSemuaPemesanan = async (page: number) => {
-    const q = query(collection(firestore, 'pembelian'));
+    const MAXPERPAGE = 6
+    const q = query(collection(firestore, 'pembelian'),orderBy('tanggalPemesanan', "desc"));
 
     const querySnapshot = await getDocs(q);
-    const lastVisible = querySnapshot.docs[page * 6];
+    const lastVisible = querySnapshot.docs[page * MAXPERPAGE];
     const pemesananArray: any[] = [];
 
     const next =
-        query(collection(firestore, "pembelian"),
+        query(collection(firestore, "pembelian"),orderBy('tanggalPemesanan', 'desc'),
         startAt(lastVisible),
-        limit(6)
+        limit(MAXPERPAGE)
     );
 
     const a = await getDocs(next)
@@ -103,3 +119,27 @@ export const ambilSemuaPemesanan = async (page: number) => {
     return [pemesananArray as DataPembelian[], querySnapshot.docs.length as number];
 };
 
+export const ambilPemesanan= async(purchaseID: string) => {
+    const purchaseRef = doc(firestore, "pembelian", purchaseID);
+    const purchaseSnapshot = await getDoc(purchaseRef);
+    const purchaseData = purchaseSnapshot.data() as DataPembelian
+
+    const paketData = await ambilPaket(purchaseData.paketID)
+
+    return [purchaseData, paketData]
+}
+
+export const editPemesanan = async (purchaseID: string, isiPemesanan:DataPembelian) => {
+    const purchaseRef = doc(firestore, "pembelian", purchaseID);
+
+    try {
+        const purchaseDoc = await getDoc(purchaseRef);
+        if (purchaseDoc.exists()) {
+            await updateDoc(purchaseRef, isiPemesanan);
+        } else {
+            console.error("Paket dengan ID yang diberikan tidak ditemukan");
+        }
+    } catch (error) {
+        console.error("Error updating user purchase history:", error);
+    }
+};

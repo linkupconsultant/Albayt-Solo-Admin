@@ -7,16 +7,16 @@ import {cardProps, paketProps} from "@/components/CardPaket";
 import {ambilSemuaPemesanan} from "@/db/query";
 import { Timestamp } from 'firebase-admin/firestore'
 
-export interface DewasaData {
+export type DewasaData = {
   nama: string;
   telp: string;
 }
-export interface AnakData {
+export type AnakData = {
   nama: string;
   tanggalLahir: string;
 }
 
-export interface DataPembelian {
+export type DataPembelian = {
   UserID: string;
   purchaseID: string;
   paketID: string;
@@ -52,10 +52,6 @@ const Page = () => {
     fetchData().then();
   }, [currentPage]);
 
-  const findPaketById = (paketId: string) => {
-    return data_paket.find((paket: { paketID: string }) => paket.paketID === paketId);
-  };
-
   const handlePageChange = (page: number) => {
     if (page < docLength/6){
       setCurrentPage(page);
@@ -70,7 +66,7 @@ const Page = () => {
           {/* Content */}
           <div className='grid grid-cols-3 items-center gap-5'>
             {data_pembelian?.map((pembelian) => (
-                <Link href={'/EditPembelian'} key={pembelian.purchaseID}>
+                <Link href={`/EditPembelian/${pembelian.purchaseID}`} key={pembelian.purchaseID}>
                   <div className='bg-white h-[21rem] shadow-md border rounded-lg duration-200 hover:shadow-xl'>
                     <div className='flex flex-col gap-2 py-4 px-6'>
                       <div className='flexEnd mb-4'>
@@ -82,7 +78,7 @@ const Page = () => {
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
                         <p className='text-gray-50'>ID User</p>
-                        <p>{pembelian.UserID.slice(0, 22)}...</p>
+                        <p className={'overflow-wrap break-word'}>{pembelian?.email}</p>
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
                         <p className='text-gray-50'>Tanggal Pembelian</p>
@@ -95,7 +91,7 @@ const Page = () => {
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
                         <p className='text-gray-50'>Paket Yang Dibeli</p>
-                        <p>{findPaketById(pembelian.paketID)?.title || 'Paket tidak ditemukan'}</p>
+                        <p>{pembelian.paketID}</p>
                       </div>
                     </div>
                   </div>
