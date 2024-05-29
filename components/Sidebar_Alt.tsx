@@ -6,7 +6,7 @@ import React, { useState } from 'react'
 const Sidebar_Alt = () => {
     const [open, setOpen] = useState(true);
 
-  return (
+    return (
     <>
         <div className={`bg-[#f14310] h-screen pt-8 w-72 relative duration-300 ${open ? 'w-72' : 'w-[5rem] p-0'}`}>
             <div onClick={() => setOpen (!open)} className={`absolute -right-4 top-9 w-8 h-8 rounded-full bg-white border z-10 flexCenter cursor-pointer ${!open && 'rotate-180'} duration-300`}>

@@ -1,21 +1,19 @@
-import { firestore } from "@/db/firebase";
+import {firestore} from "@/db/firebase";
 import {
     collection,
     deleteDoc,
     doc,
     getDoc,
     getDocs,
-    setDoc,
-    updateDoc,
-    where,
-    query,
-    startAt,
-    endAt,
     limit,
-    startAfter,
-    orderBy
+    orderBy,
+    query,
+    setDoc,
+    startAt,
+    Timestamp,
+    updateDoc,
+    where
 } from "firebase/firestore";
-import {getPaket} from "@/db/firestore";
 import {paketProps} from "@/components/CardPaket";
 import {DataPembelian} from "@/app/Pembelian/page";
 
@@ -54,22 +52,27 @@ export const ambilPaket = async(paketID: string) => {
     return paketSnapshot.data() as paketProps
 }
 
-export const addPaket = async (paketID: string, isiPaket:paketProps) => {
-    const userRef = doc(firestore, "paket", paketID);
+export const addPaket = async (isiPaket: paketProps, jadwals: Timestamp[]) => {
     try {
-        const userDoc = await getDoc(userRef);
-        if (userDoc.exists()) {
-            alert("ID Paket sudah digunakan, silakan buat ID lain")
-            return
+        for (let i = 0; i < jadwals.length; i++) {
+            const paketID = jadwals.length > 1 ? `${isiPaket.paketID}_${i + 1}` : isiPaket.paketID;
+            const userRef = doc(firestore, "paket", paketID);
+            const userDoc = await getDoc(userRef);
+            isiPaket.jadwal = jadwals[i]
+            isiPaket.paketID = paketID
+            if (userDoc.exists()) {
+                alert("ID Paket sudah digunakan, silakan buat ID lain")
+            } else {
+                await setDoc(userRef, isiPaket);
+            }
         }
     } catch (error) {
-        console.error("Error updating user purchase history:", error);
+        console.error("Paket gagal ditambahkan", error);
     }
 };
 
 export const editPaket = async (paketID: string, isiPaket:paketProps) => {
     const userRef = doc(firestore, "paket", paketID);
-
     try {
         const userDoc = await getDoc(userRef);
         if (userDoc.exists()) {
@@ -78,7 +81,7 @@ export const editPaket = async (paketID: string, isiPaket:paketProps) => {
             console.error("Paket dengan ID yang diberikan tidak ditemukan");
         }
     } catch (error) {
-        console.error("Error updating user purchase history:", error);
+        console.error("Paket gagal di-edit", error);
     }
 };
 
