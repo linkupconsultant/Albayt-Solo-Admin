@@ -17,6 +17,17 @@ import {
 import {paketProps} from "@/components/CardPaket";
 import {DataPembelian} from "@/app/Pembelian/page";
 
+const convertDateFromTimestamp = (input: Timestamp, format: number) => {
+    const date = new Date(input.seconds * 1000)
+    switch (format){
+        case 1:
+            return date.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })
+        case 2:
+            return `${date.getDate()}_${date.getMonth()}_${date.getFullYear()}`
+    }
+
+}
+
 export const ambilSemuaPaket = async (flag: "<" | ">") => {
     const specificDate = new Date();
 
@@ -53,13 +64,18 @@ export const ambilPaket = async(paketID: string) => {
 }
 
 export const addPaket = async (isiPaket: paketProps, jadwals: Timestamp[]) => {
+    const titleAwal = isiPaket.title
+    const paketidAwal = isiPaket.paketID
+
     try {
         for (let i = 0; i < jadwals.length; i++) {
-            const paketID = jadwals.length > 1 ? `${isiPaket.paketID}_${i + 1}` : isiPaket.paketID;
+            const paketID = jadwals.length > 1 ? `${paketidAwal}_${convertDateFromTimestamp(jadwals[i], 2)}` : paketidAwal;
+            const title = jadwals.length > 1 ? `${titleAwal} (${convertDateFromTimestamp(jadwals[i], 1)})` : titleAwal
             const userRef = doc(firestore, "paket", paketID);
             const userDoc = await getDoc(userRef);
             isiPaket.jadwal = jadwals[i]
             isiPaket.paketID = paketID
+            isiPaket.title = title
             if (userDoc.exists()) {
                 alert("ID Paket sudah digunakan, silakan buat ID lain")
             } else {

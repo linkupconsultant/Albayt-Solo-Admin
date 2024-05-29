@@ -19,7 +19,7 @@ const Page = () => {
     hotel: [
       { bintang: "", nama_hotel: "", url_hotel: ["", "", ""] }
     ],
-    jadwal: Timestamp.fromDate(new Date()),
+    jadwal: null,
     img: "",
     lokasiberangkat: "",
     maskapai: "",

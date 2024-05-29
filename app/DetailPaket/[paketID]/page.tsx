@@ -10,7 +10,21 @@ import {Timestamp} from "firebase/firestore";
 const Page = () => {
   const params = useParams()
   const router = useRouter()
-  const [paket, setPaket] = useState<paketProps>()
+  const [paket, setPaket] = useState<paketProps>({
+    durasi: 0,
+    harga: [],
+    harga_dp: 0,
+    hotel: [],
+    img: '',
+    jadwal: null,
+    lokasiberangkat: '',
+    maskapai: '',
+    paketID: '',
+    remainingseat: 0,
+    thumbnail: '',
+    title: '',
+    totalseat: 0,
+  })
   const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
@@ -143,8 +157,6 @@ const Page = () => {
               <img src={paket?.img} alt='foto-paket' className='w-96 h-auto'/>
             </div>
 
-            {/*<div>{JSON.stringify(paket?.img)}</div>*/}
-
             <form className='flex flex-col gap-5 my-8'>
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>ID Paket</label>
@@ -249,12 +261,6 @@ const Page = () => {
                             onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
                             className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
                         />
-                        <input
-                            value={harga.nominal || ""}
-                            readOnly={!isEditing}
-                            onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
                         <select
                             value={harga.currency || ""}
                             disabled={!isEditing}
@@ -264,6 +270,13 @@ const Page = () => {
                           <option value="usd">USD</option>
                           <option value="idr">IDR</option>
                         </select>
+                        <input
+                            value={harga.nominal || ""}
+                            readOnly={!isEditing}
+                            type={"number"}
+                            onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
+                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                        />
                       </div>
                   ))}
                   {isEditing && (
@@ -281,6 +294,7 @@ const Page = () => {
                 <label className='font-semibold text-[18px]'>Harga DP</label>
                 <input onChange={(e) => handleChange('harga_dp', e.target.value)} value={paket?.harga_dp || ""}
                        readOnly={!isEditing}
+                       type={"number"}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
@@ -301,14 +315,14 @@ const Page = () => {
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Total Seat</label>
                 <input type={"number"} onChange={(e) => handleChange('totalseat', e.target.value)}
-                       value={paket?.totalseat || ""} readOnly={!isEditing}
+                       value={paket?.totalseat >= 0 ? paket?.totalseat : ""} readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Seat Tersedia</label>
                 <input type={"number"} onChange={(e) => handleChange('remainingseat', e.target.value)}
-                       value={paket?.remainingseat || ""} readOnly={!isEditing}
+                       value={paket?.remainingseat >= 0 ? paket?.remainingseat : ""} readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 

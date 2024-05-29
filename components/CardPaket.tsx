@@ -21,7 +21,7 @@ export type paketProps = {
   harga_dp: number,
   hotel: hotelProps[],
   img: string,
-  jadwal: Timestamp,
+  jadwal: Timestamp | null,
   lokasiberangkat: string,
   maskapai: string,
   paketID: string,
