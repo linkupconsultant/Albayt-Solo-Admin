@@ -35,12 +35,14 @@ export const ambilSemuaPaket = async (flag: "<" | ">") => {
     if (flag === "<") {
         q = query(
             collection(firestore, "paket"),
-            where("jadwal", "<", specificDate)
+            where("jadwal", "<", specificDate),
+            orderBy("jadwal", "asc")
         );
     } else if (flag === ">") {
         q = query(
             collection(firestore, "paket"),
-            where("jadwal", ">", specificDate)
+            where("jadwal", ">", specificDate),
+            orderBy("jadwal", "asc")
         );
     } else {
         throw new Error("Invalid flag value");
