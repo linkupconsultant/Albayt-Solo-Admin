@@ -7,7 +7,7 @@ const page = () => {
   return (
     <>
         <section className='bg-white p-6 rounded-lg'>
-            <SectionHead title='Blog' placeholder='Cari Blog' addButton='hidden' link=''/>
+            <SectionHead title='Blog' placeholder='Cari Blog' addButton='visible' link=''/>
 
             {/* Content */}
                 <div className='grid grid-cols-3 gap-5'>
