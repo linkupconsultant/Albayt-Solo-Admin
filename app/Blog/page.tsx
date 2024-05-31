@@ -14,7 +14,7 @@ const Page = () => {
   return (
     <>
         <section className='bg-white p-6 rounded-lg'>
-            <SectionHead title='Blog' placeholder='Cari Blog' addButton='visible' link='' onSearchChange={handleSearch}/>
+            <SectionHead title='Blog' placeholder='Cari Blog' addButton='visible' link='' onSearchChange={handleSearch} searchValue={search}/>
 
             {/* Content */}
                 <div className='grid grid-cols-3 gap-5'>
