@@ -1,13 +1,20 @@
+"use client"
 import SectionHead from '@/components/SectionHead'
 import { BERITA_ARTIKEL } from '@/constant'
 import Link from 'next/link'
-import React from 'react'
+import React, {useState} from 'react'
 
-const page = () => {
+const Page = () => {
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value);
+    };
+
   return (
     <>
         <section className='bg-white p-6 rounded-lg'>
-            <SectionHead title='Blog' placeholder='Cari Blog' addButton='visible' link=''/>
+            <SectionHead title='Blog' placeholder='Cari Blog' addButton='visible' link='' onSearchChange={handleSearch}/>
 
             {/* Content */}
                 <div className='grid grid-cols-3 gap-5'>
@@ -31,4 +38,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
