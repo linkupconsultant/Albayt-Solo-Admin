@@ -87,7 +87,7 @@ const Page = () => {
                         <p>{pembelian.purchaseID}</p>
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>
-                        <p className='text-gray-50'>ID User</p>
+                        <p className='text-gray-50'>Email Jamaah</p>
                         <p className={'overflow-wrap break-word'}>{pembelian?.email}</p>
                       </div>
                       <div className='flex flex-col font-medium text-[16px]'>

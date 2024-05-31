@@ -139,13 +139,13 @@ const Page = () => {
             <form className='flex flex-col gap-5 my-8'>
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>ID Paket</label>
-                <input onChange={(e) => handleChange('paketID', e.target.value)} value={paket?.paketID || ""}
+                <input placeholder="ID Paket" onChange={(e) => handleChange('paketID', e.target.value)} value={paket?.paketID || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Nama Paket</label>
-                <input onChange={(e) => handleChange('title', e.target.value)} value={paket?.title || ""}
+                <input placeholder="Nama Paket" onChange={(e) => handleChange('title', e.target.value)} value={paket?.title || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
@@ -164,9 +164,10 @@ const Page = () => {
                 </div>
                 <div
                     onClick={handleAddJadwal}
-                    className='bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black hover:cursor-pointer'
+                    className='flex gap-2 items-center bg-[#f14310] mt-2 w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white fill-white tracking-wider hover:bg-black hover:cursor-pointer'
                 >
-                  Tambah Jadwal
+                  <svg viewBox="0 0 24 24" height={24} width={24} xmlns="http://www.w3.org/2000/svg"><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"/></svg>
+                  <p>Tambah Jadwal</p>
                 </div>
               </div>
 
@@ -174,12 +175,13 @@ const Page = () => {
                 <label className='font-semibold text-[18px]'>Lokasi Keberangkatan</label>
                 <input onChange={(e) => handleChange('lokasiberangkat', e.target.value)}
                        value={paket?.lokasiberangkat || ""}
+                       placeholder="Lokasi Keberangkatan"
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Poster Paket</label>
-                <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
+                <input placeholder="Link Google Drive Poster Paket" onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
                 <div className='flexCenter mx-8'>
                   {paket.img && (
@@ -198,7 +200,7 @@ const Page = () => {
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Thumbnail Paket</label>
-                <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
+                <input placeholder="Link Google Drive Thumbnail Paket" onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
                 <div className='flexCenter mx-8'>
                   {paket.thumbnail && (
@@ -221,37 +223,59 @@ const Page = () => {
                   {paket?.hotel.map((hotel, index) => (
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Hotel ${index + 1}`}</label>
-                        <input
-                            value={hotel.bintang || ""}
-                            onChange={(e) => handleHotelChange(index, 'bintang', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <input
-                            value={hotel.nama_hotel || ""}
-                            onChange={(e) => handleHotelChange(index, 'nama_hotel', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <div className='flex flex-col gap-1 mt-4'>
-                          <label className='font-semibold text-[18px]'>URL Hotel</label>
-                          {hotel.url_hotel.map((url, urlIndex) => (
-                              <input
-                                  key={urlIndex}
-                                  value={url || ""}
-                                  onChange={(e) => handleHotelChange(index, "urlIndex", {
-                                    index: urlIndex,
-                                    url: e.target.value
-                                  })}
-                                  className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                              />
-                          ))}
+                        <div className="ml-5 flex flex-col gap-5">
+
+                          {/* Form Input Bintang Hotel */}
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Bintang</label>
+                            <input
+                                placeholder="Bintang Hotel"
+                                value={hotel.bintang || ""}
+                                onChange={(e) => handleHotelChange(index, 'bintang', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+                          {/* End Of Form Input Bintang Hotel */}
+
+                          {/* Form Input Nama Hotel */}
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Nama</label>
+                            <input
+                                placeholder="Nama Hotel"
+                                value={hotel.nama_hotel || ""}
+                                onChange={(e) => handleHotelChange(index, 'nama_hotel', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+                          {/* End Of Form Input Nama Hotel */}
+
+                          {/* Form Input Url Hotel */}
+                          <div className='flex flex-col gap-1'>
+                            <label className='font-semibold text-[16px]'>URL Hotel</label>
+                            {hotel.url_hotel.map((url, urlIndex) => (
+                                <input
+                                    placeholder="contoh: https://www.example.com"
+                                    key={urlIndex}
+                                    value={url || ""}
+                                    onChange={(e) => handleHotelChange(index, "urlIndex", {
+                                      index: urlIndex,
+                                      url: e.target.value
+                                    })}
+                                    className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                                />
+                            ))}
+                          </div>
+                          {/* End Of Form Input Url Hotel */}
+
                         </div>
                       </div>
                   ))}
                   <div
                       onClick={handleAddHotel}
-                      className='bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black hover:cursor-pointer'
+                      className='flex gap-2 items-center bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-[16px] text-white fill-white tracking-wider hover:bg-black hover:cursor-pointer'
                   >
-                    Tambah Hotel
+                    <svg viewBox="0 0 24 24" height={24} width={24} xmlns="http://www.w3.org/2000/svg"><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"/></svg>
+                    <p>Tambah Hotel</p>
                   </div>
                 </div>
               </div>
@@ -262,64 +286,81 @@ const Page = () => {
                   {paket?.harga.map((harga, index) => (
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Harga ${index + 1}`}</label>
-                        <input
-                            value={harga.tipe || ""}
-                            onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <input
-                            value={harga.nominal || ""}
-                            onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <select
-                            value={harga.currency || ""}
-                            onChange={(e) => handleHargaChange(index, 'currency', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        >
-                          <option value="usd">USD</option>
-                          <option value="idr">IDR</option>
-                        </select>
+                        <div className="flex flex-col gap-5 ml-5">
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Tipe</label>
+                            <input
+                                placeholder="Tipe Paket"
+                                value={harga.tipe || ""}
+                                onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Nominal</label>
+                            <input
+                                placeholder="Nominal Paket (contoh: 28000000)"
+                                value={harga.nominal || ""}
+                                onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Mata Uang</label>
+                            <select
+                                value={harga.currency || ""}
+                                onChange={(e) => handleHargaChange(index, 'currency', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            >
+                              <option value="usd">USD</option>
+                              <option value="idr">IDR</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                   ))}
                   <div
                       onClick={handleAddHarga}
-                      className='bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black hover:cursor-pointer'
+                      className='flex gap-2 items-center bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white fill-white tracking-wider hover:bg-black hover:cursor-pointer'
                   >
-                    Tambah Harga
+                    <svg viewBox="0 0 24 24" height={24} width={24} xmlns="http://www.w3.org/2000/svg"><path d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"/></svg>
+                    <p>Tambah Harga</p>
                   </div>
                 </div>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Harga DP</label>
-                <input onChange={(e) => handleChange('harga_dp', e.target.value)} value={paket?.harga_dp || ""}
+                <input placeholder="contoh: 500000" onChange={(e) => handleChange('harga_dp', e.target.value)} value={paket?.harga_dp || ""}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Durasi Perjalanan</label>
-                <input type={"number"} onChange={(e) => handleChange('durasi', e.target.value)}
+                <input placeholder="Durasi Perjalanan Dalam Hari" type={"number"} onChange={(e) => handleChange('durasi', e.target.value)}
                        value={paket?.durasi || ""}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Maskapai Penerbangan</label>
-                <input onChange={(e) => handleChange('maskapai', e.target.value)} value={paket?.maskapai || ""}
+                <input placeholder="Maskapai Penerbangan" onChange={(e) => handleChange('maskapai', e.target.value)} value={paket?.maskapai || ""}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Total Seat</label>
-                <input type={"number"} onChange={(e) => handleChange('totalseat', e.target.value)}
+                <input placeholder="Jumlah Total Seat" type={"number"} onChange={(e) => handleChange('totalseat', e.target.value)}
                        value={paket?.totalseat || ""}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Seat Tersedia</label>
-                <input type={"number"} onChange={(e) => handleChange('remainingseat', e.target.value)}
+                <input placeholder="Seat Yang Tersedia" type={"number"} onChange={(e) => handleChange('remainingseat', e.target.value)}
                        value={paket?.remainingseat || ""}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>

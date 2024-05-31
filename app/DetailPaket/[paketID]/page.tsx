@@ -221,32 +221,43 @@ const Page = () => {
                   {paket?.hotel.map((hotel, index) => (
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Hotel ${index + 1}`}</label>
-                        <input
-                            value={hotel.bintang || ""}
-                            readOnly={!isEditing}
-                            onChange={(e) => handleHotelChange(index, 'bintang', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <input
-                            value={hotel.nama_hotel || ""}
-                            readOnly={!isEditing}
-                            onChange={(e) => handleHotelChange(index, 'nama_hotel', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <div className='flex flex-col gap-1 mt-4'>
-                          <label className='font-semibold text-[18px]'>URL Hotel</label>
-                          {hotel.url_hotel.map((url, urlIndex) => (
-                              <input
-                                  key={urlIndex}
-                                  value={url || ""}
-                                  readOnly={!isEditing}
-                                  onChange={(e) => handleHotelChange(index, "urlIndex", {
-                                    index: urlIndex,
-                                    url: e.target.value
-                                  })}
-                                  className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                              />
-                          ))}
+                        <div className="flex flex-col gap-5 ml-5">
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Bintang</label>
+                            <input
+                                value={hotel.bintang || ""}
+                                readOnly={!isEditing}
+                                onChange={(e) => handleHotelChange(index, 'bintang', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Nama</label>
+                            <input
+                                value={hotel.nama_hotel || ""}
+                                readOnly={!isEditing}
+                                onChange={(e) => handleHotelChange(index, 'nama_hotel', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+
+                          <div className='flex flex-col gap-1'>
+                            <label className='font-semibold text-[18px]'>URL Hotel</label>
+                            {hotel.url_hotel.map((url, urlIndex) => (
+                                <input
+                                    key={urlIndex}
+                                    value={url || ""}
+                                    readOnly={!isEditing}
+                                    onChange={(e) => handleHotelChange(index, "urlIndex", {
+                                      index: urlIndex,
+                                      url: e.target.value
+                                    })}
+                                    className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                                />
+                            ))}
+                          </div>
                         </div>
                       </div>
                   ))}
@@ -267,28 +278,43 @@ const Page = () => {
                   {paket?.harga.map((harga, index) => (
                       <div key={index} className='flex flex-col gap-1 mb-8'>
                         <label className='font-semibold text-[18px]'>{`Harga ${index + 1}`}</label>
-                        <input
-                            value={harga.tipe || ""}
-                            readOnly={!isEditing}
-                            onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
-                        <select
-                            value={harga.currency || ""}
-                            disabled={!isEditing}
-                            onChange={(e) => handleHargaChange(index, 'currency', e.target.value)}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        >
-                          <option value="usd">USD</option>
-                          <option value="idr">IDR</option>
-                        </select>
-                        <input
-                            value={harga.nominal || ""}
-                            readOnly={!isEditing}
-                            type={"number"}
-                            onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
-                            className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                        />
+                        <div className="flex flex-col gap-5 ml-5">
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Tipe</label>
+                            <input
+                                value={harga.tipe || ""}
+                                readOnly={!isEditing}
+                                onChange={(e) => handleHargaChange(index, 'tipe', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+                          
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Mata Uang</label>
+                            <select
+                                value={harga.currency || ""}
+                                disabled={!isEditing}
+                                onChange={(e) => handleHargaChange(index, 'currency', e.target.value)}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            >
+                              <option value="usd">USD</option>
+                              <option value="idr">IDR</option>
+                            </select>
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <label className="font-semibold text-[16px]">Nominal</label>
+                            <input
+                                value={harga.nominal || ""}
+                                readOnly={!isEditing}
+                                type={"number"}
+                                onChange={(e) => handleHargaChange(index, 'nominal', parseFloat(e.target.value))}
+                                className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                            />
+                          </div>
+
+                        </div>
                       </div>
                   ))}
                   {isEditing && (
