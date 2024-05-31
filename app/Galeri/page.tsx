@@ -1,13 +1,20 @@
+"use client"
 import SectionHead from '@/components/SectionHead'
 import { FOLDER_GALERI } from '@/constant'
 import Link from 'next/link'
-import React from 'react'
+import React, {useState} from 'react'
 
-const page = () => {
+const Page = () => {
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value);
+    };
+
   return (
     <>
       <section className='bg-white p-6 rounded-lg'>
-        <SectionHead title='Galeri' placeholder='Cari Galeri' addButton='visible' link='' />
+        <SectionHead title='Galeri' placeholder='Cari Galeri' addButton='visible' link=''  onSearchChange={handleSearch} searchValue={search}/>
 
         <div className='grid grid-cols-3 gap-5'>
           {FOLDER_GALERI.map((folder) => (
@@ -28,4 +35,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
