@@ -1,14 +1,21 @@
+"use client"
 import SectionHead from '@/components/SectionHead'
 import { TESTIMONI } from '@/constant'
 import Link from 'next/link'
-import React from 'react'
+import React, {useState} from 'react'
 {/* <td className='p-2 text-[14px]'>{testi.review.length > 40 ? testi.review.slice(0, 40) + '...' : testi.review}</td> */}
 
-const page = () => {
+const Page = () => {
+    const [search, setSearch] = useState("");
+
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value);
+    };
+
   return (
     <>
         <section className='bg-white rounded-lg p-6'>
-            <SectionHead title='Testimoni' placeholder='Cari Testimoni' addButton='visible' link=''/>
+            <SectionHead title='Testimoni' placeholder='Cari Testimoni' addButton='visible' link='' onSearchChange={handleSearch} searchValue={search}/>
 
             <div className='grid grid-cols-3 gap-5'>
                 {TESTIMONI.map((testi) => (
@@ -27,4 +34,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
