@@ -10,6 +10,7 @@ const Page = () => {
     const [paketLama, setPaketLama] = useState<cardProps[] | null>(null);
     const [paketLamaFetched, setPaketLamaFetched] = useState(false);
     const [refresh, setRefresh] = useState(false);
+    const [search, setSearch] = useState("");
 
     const fetchData = useCallback(async () => {
         try {
@@ -34,10 +35,26 @@ const Page = () => {
         setRefresh(!refresh);
     };
 
+    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(event.target.value);
+    };
+
+    const filterPaket = (paket: cardProps[] | null) => {
+        if (!paket) return [];
+        return paket.filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
+    };
+
     return (
         <>
             <section className="bg-white p-6 rounded-lg">
-                <SectionHead title="Paket" placeholder="Cari Paket" addButton="visible" link="/TambahPaket" />
+                <SectionHead
+                    title="Paket"
+                    placeholder="Cari Paket"
+                    addButton="visible"
+                    link="/TambahPaket"
+                    searchValue={search}
+                    onSearchChange={handleSearch}
+                />
 
                 {/* Tabs */}
                 <div className="flex justify-center gap-5 mb-4">
@@ -62,9 +79,9 @@ const Page = () => {
                 {/* Content */}
                 <div className="grid grid-cols-3 gap-5">
                     {selectedTab === "paketLama" &&
-                        paketLama?.map((paket) => <CardPaket key={paket.paketID} paket={paket}/>)}
+                        filterPaket(paketLama)?.map((paket) => <CardPaket key={paket.paketID} paket={paket}/>)}
                     {selectedTab === "paketBaru" &&
-                        paketBaru?.map((paket) => <CardPaket key={paket.paketID} paket={paket} />)}
+                        filterPaket(paketBaru)?.map((paket) => <CardPaket key={paket.paketID} paket={paket}/>)}
                 </div>
                 {/* End Of Content */}
             </section>

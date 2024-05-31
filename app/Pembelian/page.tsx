@@ -37,6 +37,7 @@ const Page = () => {
   const [data_pembelian, setData_pembelian] = useState<DataPembelian[] | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [docLength, setDocLength] = useState(0)
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,14 +59,23 @@ const Page = () => {
     }
   };
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(event.target.value);
+  };
+
+  const filterPembelian = (data_pembelian: DataPembelian[] | null) => {
+    if (!data_pembelian) return [];
+    return data_pembelian.filter((item) => item.purchaseID.toLowerCase().includes(search.toLowerCase()));
+  };
+
   return (
       <>
         <section className='bg-white p-6 rounded-lg'>
-          <SectionHead title='Pembelian' placeholder='Pembelian' addButton='hidden' link='' />
+          <SectionHead title='Pembelian' placeholder='ID Pembelian' addButton='hidden' link=''  onSearchChange={handleSearch} searchValue={search}/>
 
           {/* Content */}
           <div className='grid grid-cols-3 items-center gap-5'>
-            {data_pembelian?.map((pembelian) => (
+            {filterPembelian(data_pembelian).map((pembelian) => (
                 <Link href={`/EditPembelian/${pembelian.purchaseID}`} key={pembelian.purchaseID}>
                   <div className='bg-white h-[21rem] shadow-md border rounded-lg duration-200 hover:shadow-xl'>
                     <div className='flex flex-col gap-2 py-4 px-6'>

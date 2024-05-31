@@ -78,8 +78,10 @@ export const addPaket = async (isiPaket: paketProps, jadwals: Timestamp[]) => {
             isiPaket.title = title
             if (userDoc.exists()) {
                 alert("ID Paket sudah digunakan, silakan buat ID lain")
+                return false
             } else {
                 await setDoc(userRef, isiPaket);
+                return true
             }
         }
     } catch (error) {

@@ -42,8 +42,6 @@ const Page = () => {
 
   const handleChange = (key: keyof paketProps, value: any) => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
-
       let newValue: any = value;
       if (['remainingseat', 'totalseat', 'durasi'].includes(key)) {
         newValue = parseInt(value);
@@ -57,7 +55,6 @@ const Page = () => {
 
   const handleHargaChange = (index: number, key: keyof hargaProps, value: any) => {
     setPaket(prevPaket => {
-      if (!prevPaket) return prevPaket;
       const hargaBaru = [...prevPaket.harga];
       hargaBaru[index] = { ...hargaBaru[index], [key]: value };
       return { ...prevPaket, harga: hargaBaru };
@@ -66,7 +63,6 @@ const Page = () => {
 
   const handleHotelChange = (index: number, key: keyof hotelProps | 'urlIndex', value: any) => {
     setPaket(prevPaket => {
-      if (!prevPaket) return prevPaket;
       const hotelBaru = [...prevPaket.hotel];
       if (key === 'urlIndex') {
         hotelBaru[index].url_hotel[value.index] = value.url;
@@ -79,7 +75,6 @@ const Page = () => {
 
   const handleAddHotel = () => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
       const newHotel: hotelProps = {
         bintang: "",
         nama_hotel: "",
@@ -91,7 +86,6 @@ const Page = () => {
 
   const handleAddHarga = () => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
       const newHarga: hargaProps = {
         tipe: "",
         nominal: 0,
@@ -102,7 +96,6 @@ const Page = () => {
   };
 
   const handleSimpan = async () => {
-    if (!paket) return;
     setIsEditing(prev => !prev);
     if (window.confirm("Apakah Anda yakin ingin menyimpan perubahan pada paket ini?")) {
       await editPaket(String(params.paketID), paket);
@@ -153,10 +146,6 @@ const Page = () => {
 
           {/* Content */}
           <div className='my-8'>
-            <div className='flexCenter mb-8'>
-              <img src={paket?.img} alt='foto-paket' className='w-96 h-auto'/>
-            </div>
-
             <form className='flex flex-col gap-5 my-8'>
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>ID Paket</label>
@@ -172,6 +161,42 @@ const Page = () => {
               </div>
 
               <div className='flex flex-col gap-1'>
+                <label className='font-semibold text-[18px]'>Poster Paket</label>
+                <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
+                       readOnly={!isEditing}
+                       className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+                <div className='flexCenter mx-8'>
+                  <img
+                      src={paket?.img}
+                      alt='foto-paket'
+                      className='w-96 h-auto'
+                      onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                      }}
+                  />
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-1'>
+                <label className='font-semibold text-[18px]'>Thumbnail Paket</label>
+                <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
+                       readOnly={!isEditing}
+                       className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
+                <div className='flexCenter mx-8'>
+                  <img
+                      src={paket?.thumbnail}
+                      alt='foto-paket'
+                      className='w-96 h-auto'
+                      onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                      }}
+                  />
+                </div>
+              </div>
+
+              <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Tanggal Keberangkatan</label>
                 <input
                     type="date"
@@ -184,21 +209,8 @@ const Page = () => {
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Lokasi Keberangkatan</label>
-                <input onChange={(e) => handleChange('lokasiberangkat', e.target.value)} value={paket?.lokasiberangkat || ""}
-                       readOnly={!isEditing}
-                       className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
-              </div>
-
-              <div className='flex flex-col gap-1'>
-                <label className='font-semibold text-[18px]'>Poster Paket</label>
-                <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
-                       readOnly={!isEditing}
-                       className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
-              </div>
-
-              <div className='flex flex-col gap-1'>
-                <label className='font-semibold text-[18px]'>Thumbnail Paket</label>
-                <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
+                <input onChange={(e) => handleChange('lokasiberangkat', e.target.value)}
+                       value={paket?.lokasiberangkat || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
@@ -300,7 +312,8 @@ const Page = () => {
 
               <div className='flex flex-col gap-1'>
                 <label className='font-semibold text-[18px]'>Durasi Perjalanan</label>
-                <input type={"number"} onChange={(e) => handleChange('durasi', e.target.value)} value={paket?.durasi || ""}
+                <input type={"number"} onChange={(e) => handleChange('durasi', e.target.value)}
+                       value={paket?.durasi || ""}
                        readOnly={!isEditing}
                        className='text-gray-50 px-2 py-4 w-[52%] border rounded-lg focus:outline-none'/>
               </div>

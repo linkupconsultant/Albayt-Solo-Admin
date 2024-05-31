@@ -54,7 +54,7 @@ const Page = () => {
         <form className='flex flex-col gap-6'>
 
           <div className='flex flex-col gap-2'>
-            <h3 className='font-bold text-[18px]'>ID Paket</h3>
+            <h3 className='font-bold text-[18px]'>ID Pembelian</h3>
             <input defaultValue={pembelian?.purchaseID || ""} readOnly
                    className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
           </div>
@@ -158,7 +158,7 @@ const Page = () => {
           <div className='flex flex-col gap-2'>
             <h3 className='font-bold text-[18px]'>Bukti Pembayaran</h3>
             <div className='flexCenter'>
-              <img src='/Poster/paket_1.jpeg' className='h-[32rem] w-auto'></img>
+              <img src={pembelian?.urlBuktiPembayaran || "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg"} className='h-auto w-1/2'></img>
             </div>
           </div>
 

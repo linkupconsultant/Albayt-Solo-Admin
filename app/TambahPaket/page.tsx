@@ -6,9 +6,10 @@ import Image from "next/image";
 import {cardProps, hargaProps, hotelProps, paketProps} from "@/components/CardPaket";
 import {addPaket, ambilPaket, ambilSemuaPaket, deletePaket, editPaket} from "@/db/query";
 import {Timestamp} from "firebase/firestore";
+import TextEditor from "@/components/TextEditor";
+import {Editor} from "react-draft-wysiwyg";
 
 const Page = () => {
-  const params = useParams()
   const router = useRouter()
   const [paket, setPaket] = useState<paketProps>({
     durasi: 0,
@@ -25,7 +26,7 @@ const Page = () => {
     maskapai: "",
     paketID: "",
     remainingseat: 0,
-    thumbnail: "",
+    thumbnail: `https://google-drive-storage.solo-albayt.workers.dev/paket_data/default.jpg`,
     title: "",
     totalseat: 0,
   })
@@ -33,22 +34,30 @@ const Page = () => {
 
   const handleChange = (key: keyof paketProps, value: any) => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
-
       let newValue: any = value;
       if (['remainingseat', 'totalseat', 'durasi'].includes(key)) {
         newValue = parseInt(value);
       } else if (key === 'jadwal') {
         newValue = Timestamp.fromDate(new Date(value));
       }
-
+      // else if (key === 'paketID'){
+      //     changeImgURL(value)
+      // }
       return { ...prevPaket, [key]: newValue } as paketProps;
     });
   };
 
+  // const changeImgURL = (value: string) => {
+  //   setPaket(prevState => {
+  //     return {...prevState,
+  //       img: `https://google-drive-storage.solo-albayt.workers.dev/paket_data/${value}/poster.png`,
+  //       thumbnail: `https://google-drive-storage.solo-albayt.workers.dev/paket_data/${value}/thumbnail.png`,
+  //     }
+  //   })
+  // }
+
   const handleHargaChange = (index: number, key: keyof hargaProps, value: any) => {
     setPaket(prevPaket => {
-      if (!prevPaket) return prevPaket;
       const hargaBaru = [...prevPaket.harga];
       hargaBaru[index] = { ...hargaBaru[index], [key]: value };
       return { ...prevPaket, harga: hargaBaru };
@@ -57,7 +66,6 @@ const Page = () => {
 
   const handleHotelChange = (index: number, key: keyof hotelProps | 'urlIndex', value: any) => {
     setPaket(prevPaket => {
-      if (!prevPaket) return prevPaket;
       const hotelBaru = [...prevPaket.hotel];
       if (key === 'urlIndex') {
         hotelBaru[index].url_hotel[value.index] = value.url;
@@ -70,7 +78,6 @@ const Page = () => {
 
   const handleAddHotel = () => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
       const newHotel: hotelProps = {
         bintang: "",
         nama_hotel: "",
@@ -89,7 +96,6 @@ const Page = () => {
 
   const handleAddHarga = () => {
     setPaket((prevPaket) => {
-      if (!prevPaket) return prevPaket;
       const newHarga: hargaProps = {
         tipe: "",
         nominal: 0,
@@ -100,10 +106,10 @@ const Page = () => {
   };
 
   const handleSimpan = async () => {
-    if (!paket) return;
     if (window.confirm("Apakah Anda yakin ingin menyimpan paket ini?")) {
-      await addPaket(paket, jadwal);
-      router.push("/PaketPage")
+      if (await addPaket(paket, jadwal)){
+        router.push("/PaketPage")
+      }
     }
   };
 
@@ -115,6 +121,7 @@ const Page = () => {
 
   return (
       <>
+        {/*{JSON.stringify(paket)}*/}
         <section className='bg-white p-6 rounded-lg'>
           <div className='flex gap-5 items-center'>
             <Link href={'/PaketPage'}>
@@ -124,7 +131,7 @@ const Page = () => {
                     d="m9.474 5.209s-4.501 4.505-6.254 6.259c-.147.146-.22.338-.22.53s.073.384.22.53c1.752 1.754 6.252 6.257 6.252 6.257.145.145.336.217.527.217.191-.001.383-.074.53-.221.293-.293.294-.766.004-1.057l-4.976-4.976h14.692c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-14.692l4.978-4.979c.289-.289.287-.761-.006-1.054-.147-.147-.339-.221-.53-.221-.191-.001-.38.071-.525.215z"/>
               </svg>
             </Link>
-            <h1 className='font-bold uppercase text-4xl text-[#f14310]'>{paket?.title}</h1>
+            <h1 className='font-bold uppercase text-4xl text-[#f14310]'>Tambah Paket</h1>
           </div>
 
           {/* Content */}
@@ -142,17 +149,19 @@ const Page = () => {
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
               </div>
 
-              <div className='flex flex-col gap-1'>
+              <div>
                 <label className='font-semibold text-[18px]'>Tanggal Keberangkatan</label>
-                {jadwal.map((timestamp, index) => (
-                    <input
-                        key={index}
-                        type="date"
-                        onChange={(e) => handleJadwalChange(index, e.target.value)}
-                        value={new Date(timestamp.seconds * 1000).toISOString().split('T')[0]}
-                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
-                    />
-                ))}
+                <div className='flex flex-col mt-4'>
+                  {jadwal.map((timestamp, index) => (
+                      <input
+                          key={index}
+                          type="date"
+                          onChange={(e) => handleJadwalChange(index, e.target.value)}
+                          value={new Date(timestamp.seconds * 1000).toISOString().split('T')[0]}
+                          className='block mb-4 text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'
+                      />
+                  ))}
+                </div>
                 <div
                     onClick={handleAddJadwal}
                     className='bg-[#f14310] w-fit px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black hover:cursor-pointer'
@@ -173,8 +182,16 @@ const Page = () => {
                 <input onChange={(e) => handleChange('img', e.target.value)} value={paket?.img || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
                 <div className='flexCenter mx-8'>
-                  {paket.img.length > 0 && (
-                      <img src={paket?.img} alt='foto-paket' className='w-96 h-auto'/>
+                  {paket.img && (
+                      <img
+                          src={paket?.img}
+                          alt='foto-paket'
+                          className='w-96 h-auto'
+                          onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                          }}
+                      />
                   )}
                 </div>
               </div>
@@ -184,8 +201,16 @@ const Page = () => {
                 <input onChange={(e) => handleChange('thumbnail', e.target.value)} value={paket?.thumbnail || ""}
                        className='text-gray-50 px-2 py-4 border rounded-lg focus:outline-none'/>
                 <div className='flexCenter mx-8'>
-                  {paket.thumbnail.length > 0 && (
-                      <img src={paket?.thumbnail} alt='foto-paket' className='w-96 h-auto'/>
+                  {paket.thumbnail && (
+                      <img
+                          src={paket?.thumbnail}
+                          alt='foto-paket'
+                          className='w-96 h-auto'
+                          onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                            const target = e.target as HTMLImageElement;
+                            target.src = "https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg";
+                          }}
+                      />
                   )}
                 </div>
               </div>
@@ -310,6 +335,11 @@ const Page = () => {
               Simpan
             </button>
           </div>
+
+          {/*<div className={"w-full"}>*/}
+          {/*  <TextEditor />*/}
+          {/*</div>*/}
+
         </section>
       </>
   );
