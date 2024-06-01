@@ -19,7 +19,7 @@ const Page = () => {
             {/* Content */}
                 <div className='grid grid-cols-3 gap-5'>
                     {BERITA_ARTIKEL.map((blog) => (
-                        <Link key={blog.id} href={'/DetailBlog'}>
+                        <Link key={blog.id} href={`/Blog/${blog.id}`}>
                             <div className='bg-white h-64 border shadow-md rounded-lg duration-200 hover:shadow-xl'>
                                 <img src={blog.image} alt='foto-blog' className='object-cover w-full h-[60%] rounded-t-lg' />
 

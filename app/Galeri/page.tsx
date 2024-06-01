@@ -55,7 +55,7 @@ const Page = () => {
                                      className='object-cover w-full h-[70%] rounded-t-lg'/>
 
                                 <div className='px-6 py-3'>
-                                    <h1 className='text-center font-bold text-[18px]'>{folderPath}</h1>
+                                    <h1 className='text-center font-bold text-[18px]'>{folderPath.toUpperCase()}</h1>
                                 </div>
                             </div>
                         </Link>

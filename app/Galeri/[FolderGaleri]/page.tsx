@@ -49,7 +49,7 @@ const Page = () => {
                             </svg>
                         </button>
                     </Link>
-                    <h1 className='font-bold text-4xl text-[#f14310]'>UMRAH BERSAMA 2024</h1>
+                    <h1 className='font-bold text-4xl text-[#f14310]'>{decodeURIComponent(String(params.FolderGaleri)).toUpperCase()}</h1>
                 </div>
 
                 {/*<button*/}

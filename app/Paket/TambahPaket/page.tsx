@@ -108,7 +108,7 @@ const Page = () => {
   const handleSimpan = async () => {
     if (window.confirm("Apakah Anda yakin ingin menyimpan paket ini?")) {
       if (await addPaket(paket, jadwal)){
-        router.push("/PaketPage")
+        router.push("/Paket")
       }
     }
   };

@@ -105,7 +105,7 @@ const Page = () => {
   const handleDelete = async () => {
     if (window.confirm("Apakah Anda yakin ingin menghapus paket ini?")) {
       await deletePaket(String(params.paketID));
-      router.replace("/PaketPage");
+      router.replace("/Paket");
     }
   };
 
