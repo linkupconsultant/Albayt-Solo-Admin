@@ -113,7 +113,7 @@ const Page = () => {
       <>
         <section className='bg-white p-6 rounded-lg'>
           <div className='flex gap-5 items-center'>
-            <Link href={'/PaketPage'}>
+            <Link href={'/Paket'}>
               <svg width={36} height={36} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                    className='bg-[#f14310] fill-white rounded-md duration-200 hover:bg-black'>
                 <path
@@ -369,7 +369,7 @@ const Page = () => {
           </div>
           {/* End Of Content */}
 
-          <Link href={'/PaketPage'}>
+          <Link href={'/Paket'}>
             <div className='flexEnd mt-5'>
               <button
                   className='bg-[#f14310] px-4 py-2 rounded-lg duration-200 font-medium text-white tracking-wider hover:bg-black'>

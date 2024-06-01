@@ -76,7 +76,7 @@ const Page = () => {
           {/* Content */}
           <div className='grid grid-cols-3 items-center gap-5'>
             {filterPembelian(data_pembelian).map((pembelian) => (
-                <Link href={`/EditPembelian/${pembelian.purchaseID}`} key={pembelian.purchaseID}>
+                <Link href={`/Pembelian/${pembelian.purchaseID}`} key={pembelian.purchaseID}>
                   <div className='bg-white h-[21rem] shadow-md border rounded-lg duration-200 hover:shadow-xl'>
                     <div className='flex flex-col gap-2 py-4 px-6'>
                       <div className='flexEnd mb-4'>

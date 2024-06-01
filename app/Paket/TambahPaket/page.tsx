@@ -124,7 +124,7 @@ const Page = () => {
         {/*{JSON.stringify(paket)}*/}
         <section className='bg-white p-6 rounded-lg'>
           <div className='flex gap-5 items-center'>
-            <Link href={'/PaketPage'}>
+            <Link href={'/Paket'}>
               <svg width={36} height={36} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                    className='bg-[#f14310] fill-white rounded-md duration-200 hover:bg-black'>
                 <path

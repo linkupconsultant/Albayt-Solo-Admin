@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
 
-export default nextConfig;
+const nextConfig = {
+    images: {
+        domains: ['google-drive-storage.solo-albayt.workers.dev'],
+    },
+}
+
+export default nextConfig

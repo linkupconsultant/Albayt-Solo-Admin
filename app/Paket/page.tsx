@@ -51,7 +51,7 @@ const Page = () => {
                     title="Paket"
                     placeholder="Cari Paket"
                     addButton="visible"
-                    link="/TambahPaket"
+                    link="/Paket/TambahPaket"
                     searchValue={search}
                     onSearchChange={handleSearch}
                 />
