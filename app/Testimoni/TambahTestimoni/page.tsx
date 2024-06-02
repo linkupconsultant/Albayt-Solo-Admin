@@ -29,7 +29,7 @@ const Page = () => {
 
         const res = await fetch(url)
         const allData = await res.json() as TestiProps[]
-        const arr = [...allData, testimoni];
+        const arr = [testimoni, ...allData];
 
         const file = new Blob([JSON.stringify(arr)], { type: "application/json" });
         const response = await fetch(url, {
