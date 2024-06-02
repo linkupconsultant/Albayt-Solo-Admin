@@ -28,7 +28,7 @@ const Page = () => {
         const url = `https://google-drive-storage.solo-albayt.workers.dev/testimoni/testimoni.json`
 
         const res = await fetch(url)
-        const allData = await res.json()
+        const allData = await res.json() as TestiProps[]
         const arr = [...allData, testimoni];
 
         const file = new Blob([JSON.stringify(arr)], { type: "application/json" });
